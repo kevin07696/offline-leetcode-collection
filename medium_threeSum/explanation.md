@@ -7,30 +7,31 @@ Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]]
 
 ## 2 Pointer Solution
 ```python
-def threeSum(self, nums: List[int]) -> List[List[int]]:
-    nums.sort()
-    res = []
-    target = 0
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        res = []
+        target = 0
 
-    for i, a in enumerate(nums):
-        if i > 0 and a == nums[i-1]:
-            continue
+        for i, a in enumerate(nums):
+            if i > 0 and a == nums[i-1]:
+                continue
+            
+            left, right = i+1, len(nums)-1
+            while left < right:
+                sum = a + nums[left] + nums[right]
+                if sum > target:
+                    right -= 1
+                elif sum < target:
+                    left += 1
+                else:
+                    res.append([nums[i], nums[left], nums[right]])
+                    left += 1
+                    right -= 1
+                    while nums[left] == nums[left-1] and left < right:
+                        left += 1 
         
-        left, right = i+1, len(nums)-1
-        while left < right:
-            sum = a + nums[left] + nums[right]
-            if sum > target:
-                right -= 1
-            elif sum < target:
-                left += 1
-            else:
-                res.append([nums[i], nums[left], nums[right]])
-                left += 1
-                right -= 1
-                while nums[left] == nums[left-1] and left < right:
-                    left += 1 
-    
-    return res
+        return res
 ```
 
 ## How It Works
@@ -40,7 +41,7 @@ def threeSum(self, nums: List[int]) -> List[List[int]]:
 nums.sort()
 ```
 
-To use 2 pointers algorithm you need to sort the array first. 
+To use 2 pointers for Three Sum you need to sort the array first. 
 If sum is greater than 0 you can decrement the largest element.
 If sum is less than 0 you can increment the smallest element.
 ```python
