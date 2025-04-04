@@ -41,7 +41,7 @@ class Solution:
 nums.sort()
 ```
 
-To use 2 pointers for Three Sum you need to sort the array first. 
+To use 2 pointers for hree Sum you need to sort the array first. 
 If sum is greater than 0 you can decrement the largest element.
 If sum is less than 0 you can increment the smallest element.
 ```python
