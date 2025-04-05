@@ -31,5 +31,5 @@ class TestMaxWaterContainer(unittest.TestCase):
             with self.subTest(case.title):
                 area = maxArea(case.heights)
                 self.assertEqual(case.expectedArea, area, 
-                    f"Expected area: {case.expectedArea} does not equal result: {area}")
+                    f"Test Case: {case.title}: Expected area: {case.expectedArea} does not equal result: {area}")
 
