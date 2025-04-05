@@ -36,8 +36,9 @@ class TestThreeSum(unittest.TestCase):
             with self.subTest(case.title):
                 result = threeSum(self, case.nums)
                 self.assertEqual(len(case.expectedTriplets), len(result), 
-                    f"Expected length: {len(case.expectedTriplets)} does not equal result length: {len(result)}.\nResult: {result}")
+                    f"Test Case: {case.title}: Expected length: {len(case.expectedTriplets)} does not equal result length: {len(result)}.\nResult: {result}")
                 for i in range(len(result)):
                     result[i].sort()
-                    self.assertTrue(tuple(result[i]) in case.expectedTriplets)
+                    self.assertTrue(tuple(result[i]) in case.expectedTriplets,
+                        f"Test Case: {case.title}: {tuple(result[i])} missing in expected triplets: {case.expectedTriplets}")
 
